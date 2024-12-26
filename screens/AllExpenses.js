@@ -9,6 +9,7 @@ export default function AllExpenses() {
     <ExpensesOutput
       expensesPeriod="Total"
       expenses={expenseCtx.expenses}
+      fallbackText={'No Expenses found !!'}
     />
   );
 }

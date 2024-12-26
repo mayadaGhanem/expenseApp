@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 8,
-    margin: 8,
+    marginVertical: 8,
   },
   TextBase: {
     color: ColorsPalette.primary800,

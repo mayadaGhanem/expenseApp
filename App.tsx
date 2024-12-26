@@ -38,7 +38,7 @@ function MyTabs() {
             name={'plus'}
             color={tintColor}
             size={24}
-            onPress={navigation.navigate('ManageExpense')}
+            onPress={()=>navigation.navigate('ManageExpense')}
           />
         ),
       })}>
@@ -77,7 +77,7 @@ function App(): React.JSX.Element {
   return (
     <>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ExpenseContextProvider>

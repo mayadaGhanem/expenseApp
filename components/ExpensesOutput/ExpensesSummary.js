@@ -16,12 +16,13 @@ export default function expensesSummary({expenses, expensesPeriod}) {
 }
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 8,
     backgroundColor: ColorsPalette.primary50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 8,
-    margin: 8,
+    marginVertical: 8,
   },
   period: {
     color: ColorsPalette.primary800,

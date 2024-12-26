@@ -59,12 +59,14 @@ const expenseReducer = (state, action) => {
       return state.filter(item => item.id !== action.payload);
     }
     case 'UPDATE': {
-      state.forEach(item => {
+      const updatedState = state.map(item => {
         if (item.id === action.payload.id) {
-          item = action.payload.expense;
+          return { ...item, ...action.payload.expense }; // Create a new object with updated values
         }
+        return item; // Return the original item unchanged
       });
-      return state;
+
+      return updatedState;
     }
     default: {
       return state;
