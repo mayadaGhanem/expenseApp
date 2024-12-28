@@ -52,6 +52,9 @@ const DUMMY_EXPENSES = [
 ];
 const expenseReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_EXPENSES': {
+      return action.payload;
+    }
     case 'ADD': {
       return [...state, action.payload];
     }
@@ -61,7 +64,7 @@ const expenseReducer = (state, action) => {
     case 'UPDATE': {
       const updatedState = state.map(item => {
         if (item.id === action.payload.id) {
-          return { ...item, ...action.payload.expense }; // Create a new object with updated values
+          return {...item, ...action.payload.expense}; // Create a new object with updated values
         }
         return item; // Return the original item unchanged
       });
@@ -74,12 +77,15 @@ const expenseReducer = (state, action) => {
   }
 };
 export function ExpenseContextProvider({children}) {
-  const [expenseState, dispatch] = useReducer(expenseReducer, DUMMY_EXPENSES);
+  const [expenseState, dispatch] = useReducer(expenseReducer, []);
   function addExpense(newExpense) {
     dispatch({
       type: 'ADD',
-      payload: {...newExpense, id: Math.random().toString()},
+      payload: newExpense,
     });
+  }
+  function setExpenses(expenses) {
+    dispatch({type: 'SET_EXPENSES', payload: expenses});
   }
   function deleteExpense(id) {
     dispatch({type: 'DELETE', payload: id});
@@ -93,6 +99,7 @@ export function ExpenseContextProvider({children}) {
     addExpense,
     deleteExpense,
     updateExpense,
+    setExpenses,
   };
 
   return (
